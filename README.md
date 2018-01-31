@@ -79,4 +79,5 @@ PS:我基础比较薄弱,只会简单搭建一个web服务器,很多时候我都
 ## Support
 最近在项目中学习,在项目中成长,所以亲们会看到我在项目里面写博客啦,哈哈哈 <br/>
 如果你喜欢这个repository，请我喝杯咖啡，我会让它更完美~ <br/>
-![打开你的微信](get_me_a_drink.png)
+
+<a href="get_me_a_drink.png"><img src="get_me_a_drink.png" width="30%" height="30%"/></a><img height="0" width="8px"/>
