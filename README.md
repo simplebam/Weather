@@ -15,19 +15,33 @@ PS:酷欧天气中的天气数据由和风天气提供，背景图片由必应�
 App体验:[Simplebam/coolweather](https://github.com/simplebam/Weather/releases/download/v1.0/coolweather-release_v1.0.apk)
 
 
-### seeWeather
+### SeeWeather
 就看天气——是一款遵循 Material Design 风格的只看天气的APP。 <br/>
 卡片展现（当前天气情况，未来几小时天气情况，生活建议，一周七天概况） <br/>
 缓存数据，减少网络请求，保证离线查看 <br/>
 内置两套图标（设置里更改）
 
-原作者GitHub项目地址:[xcc3641/SeeWeather](https://github.com/xcc3641/SeeWeather)
+原作者GitHub项目地址:[xcc3641/SeeWeather](https://github.com/xcc3641/SeeWeather) <br/>
+<a href="./art/seeweather_home.jpg"><img src="./art/seeweather_home.jpg" width="20%" height="20%"/></a><img height="0" width="8px"/><a href="./art/seeweather_setting.jpg"><img src="./art/seeweather_setting.jpg" width="20%" height="20%"/></a><img height="0" width="8px"/>
+
+App体验:[Simplebam/coolweather](https://github.com/simplebam/Weather/releases/download/v1.0/coolweather-release_v1.0.apk)
+项目中的Project/config.gradle配置仅仅属于SeeWeather的,模仿原项目,懒得改而已
 
 
 ### 假装看天气
 
 原作者GitHub项目地址:[li-yu/FakeWeather: 『假装看天气』─── 天气预报 & 公交
 查询 & 资讯阅读 & 妹纸福利 的 Android 客户端](https://github.com/li-yu/FakeWeather)
+
+
+### 最理想的天气App
+* [zifangsky/WeatherSpider: 天气爬虫（全国城镇天气自动定时抓取更新，并开放
+  RESTful查询接口），附带代理IP池定时更新并检测其可用性 ](https://github.com/zifangsky/WeatherSpider)
+* [使用WebMagic+ActiveMQ实现全国城镇天气自动更新的A | zifangsky的个人博客](https://www.zifangsky.cn/901.html)
+PS:自给自足(数据自己爬取提供是最靠谱的),其实我个人不是很喜欢和风天气,老是升级,我
+   买郭霖第二行代码时候是x5(郭霖先生的书籍里面用的是x3),现在又不知道x几了,还不如
+   用[全国天气预报数据接口_免费API接口调用-聚合数据](https://www.juhe.cn/docs/api/id/39)
+   或者[全国天气预报 - Mob Api官网]( http://api.mob.com/#/apiwiki/weather)
 
 
 ## 接口数据
