@@ -5,7 +5,7 @@
 内置两套图标（设置里更改）
 
 原作者Github项目:[xcc3641/SeeWeather](https://github.com/xcc3641/SeeWeather) <br/>
-<a href="../art/seeweather_home.jpg"><img src="../art/seeweather_home.jpg" width="20%"/></a><img height="0" width="8px"/><a href="../art/seeweather_setting.jpg"><img src="../art/seeweather_setting.jpg" width="20%" /></a><img height="0" width="8px"/>
+<a href="../art/seeweather_home.jpg"><img src="../art/seeweather_home.jpg" width="40%"/></a><img height="0" width="8px"/><a href="../art/seeweather_setting.jpg"><img src="../art/seeweather_setting.jpg" width="40%" /></a><img height="0" width="8px"/>
 
 
 ### 项目中用到的知识
