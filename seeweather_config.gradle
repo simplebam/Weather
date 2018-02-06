@@ -9,7 +9,7 @@ ext {
             targetSdkVersion : 27,
             applicationId    : "com.yueyue.seeweather",
             versionCode      : 3,
-            versionName      : "3.2",
+            versionName      : "3.3",
             resConfigs       : "zh",
     ]
 

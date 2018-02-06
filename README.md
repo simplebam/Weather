@@ -24,7 +24,7 @@ App体验:[Simplebam/coolweather](https://github.com/simplebam/Weather/releases/
 原作者GitHub项目地址:[xcc3641/SeeWeather](https://github.com/xcc3641/SeeWeather) <br/>
 <a href="./art/seeweather_home.jpg"><img src="./art/seeweather_home.jpg" width="20%" height="20%"/></a><img height="0" width="8px"/><a href="./art/seeweather_setting.jpg"><img src="./art/seeweather_setting.jpg" width="20%" height="20%"/></a><img height="0" width="8px"/>
 
-App体验:[就看天气 - fir.im](https://fir.im/kbdc?release_id=5a79a152959d69265faa6d0f)<br/>
+App体验:[就看天气 - fir.im](https://fir.im/kbdc)<br/>
 项目中的Project/seeweather_config.gradle配置仅仅属于SeeWeather的,模仿原项目,懒得改而已
 
 
