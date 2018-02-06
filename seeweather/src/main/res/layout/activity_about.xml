@@ -31,6 +31,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+                    android:contentDescription="@string/app_name"
                     android:id="@+id/banner"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

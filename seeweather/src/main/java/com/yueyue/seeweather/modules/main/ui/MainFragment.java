@@ -19,7 +19,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yueyue.seeweather.R;
 import com.yueyue.seeweather.base.BaseFragment;
 import com.yueyue.seeweather.common.utils.RxUtil;
-import com.yueyue.seeweather.common.utils.SharedPreferenceUtil;
+import com.yueyue.seeweather.common.utils.SpUtil;
 import com.yueyue.seeweather.common.utils.ToastUtil;
 import com.yueyue.seeweather.common.utils.Util;
 import com.yueyue.seeweather.common.utils.VersionUtil;
@@ -133,7 +133,7 @@ public class MainFragment extends BaseFragment {
             .doOnError(throwable -> {
                 mIvError.setVisibility(View.VISIBLE);
                 mRecyclerView.setVisibility(View.GONE);
-                SharedPreferenceUtil.getInstance().setCityName("北京");
+                SpUtil.getInstance().setCityName("北京");
                 safeSetTitle("找不到城市啦");
             })
             .doOnNext(weather -> {
@@ -163,7 +163,7 @@ public class MainFragment extends BaseFragment {
      * 从网络获取
      */
     private Observable<Weather> fetchDataByNetWork() {
-        String cityName = SharedPreferenceUtil.getInstance().getCityName();
+        String cityName = SpUtil.getInstance().getCityName();
         return RetrofitSingleton.getInstance()
             .fetchWeather(cityName)
             .compose(RxUtil.fragmentLifecycle(this));
@@ -181,14 +181,14 @@ public class MainFragment extends BaseFragment {
         mLocationOption.setOnceLocation(true);
         mLocationOption.setWifiActiveScan(false);
         //设置定位间隔 单位毫秒
-        int autoUpdateTime = SharedPreferenceUtil.getInstance().getAutoUpdate();
-        mLocationOption.setInterval((autoUpdateTime == 0 ? 100 : autoUpdateTime) * SharedPreferenceUtil.ONE_HOUR);
+        int autoUpdateTime = SpUtil.getInstance().getAutoUpdate();
+        mLocationOption.setInterval((autoUpdateTime == 0 ? 100 : autoUpdateTime) * SpUtil.ONE_HOUR);
         mLocationClient.setLocationOption(mLocationOption);
         mLocationClient.setLocationListener(aMapLocation -> {
             if (aMapLocation != null) {
                 if (aMapLocation.getErrorCode() == 0) {//定位成功。
                     aMapLocation.getLocationType();
-                    SharedPreferenceUtil.getInstance().setCityName(Util.replaceCity(aMapLocation.getCity()));
+                    SpUtil.getInstance().setCityName(Util.replaceCity(aMapLocation.getCity()));
                 } else {
                     if (isAdded()) {
                         ToastUtil.showShort(getString(R.string.errorLocation));

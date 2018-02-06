@@ -53,7 +53,7 @@ public class VersionUtil {
                     String firVersionName = version.versionShort;
                     String currentVersionName = VersionUtil.getVersion(context);
                     if (currentVersionName.compareTo(firVersionName) < 0) {
-                        if (!SharedPreferenceUtil.getInstance().getString("version", "").equals(version.versionShort)) {
+                        if (!SpUtil.getInstance().getString("version", "").equals(version.versionShort)) {
                             showUpdateDialog(version, context);
                         }
                     }
@@ -91,7 +91,7 @@ public class VersionUtil {
                 })
                 .setNegativeButton("跳过此版本",
                         (dialog, which) ->
-                                SharedPreferenceUtil.getInstance().putString("version", versionAPI.versionShort))
+                                SpUtil.getInstance().putString("version", versionAPI.versionShort))
                 .show();
     }
 }

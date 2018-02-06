@@ -116,10 +116,5 @@ public class Util {
         return (int) (dipValue * scale + 0.5f);
     }
 
-    public static void copyToClipboard(String info, Context context) {
-        ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clipData = ClipData.newPlainText("msg", info);
-        manager.setPrimaryClip(clipData);
-        ToastUtil.showShort(String.format("[%s] 已经复制到剪切板啦( •̀ .̫ •́ )✧", info));
-    }
+
 }

@@ -12,7 +12,10 @@ public class SettingActivity extends ToolbarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getToolbar().setTitle("设置");
-        getFragmentManager().beginTransaction().replace(R.id.frameLayout, new SettingFragment()).commit();
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frameLayout, new SettingFragment())
+                .commit();
     }
 
     @Override

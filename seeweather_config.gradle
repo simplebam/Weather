@@ -1,4 +1,5 @@
 ext {
+    //项目中的Project/seeweather_config.gradle配置仅仅属于SeeWeather的,模仿原项目,懒得改而已
     android = [
             // Sdk and tools
             buildToolsVersion: '27.0.2',
@@ -7,8 +8,8 @@ ext {
             compileSdkVersion: 27,
             targetSdkVersion : 27,
             applicationId    : "com.yueyue.seeweather",
-            versionCode      : 2,
-            versionName      : "2.0",
+            versionCode      : 3,
+            versionName      : "3.1",
             resConfigs       : "zh",
     ]
 
@@ -20,6 +21,11 @@ ext {
     fir = [
             name : "FirToken",
             value: "9f54d692924d4f867795c3047cf57dc4"
+    ]
+
+    alipay = [
+            name : "ALiPayKey",
+            value: "a6x05642avlqmavn1qaak43"
     ]
 
 
@@ -40,4 +46,5 @@ ext {
     glide_version='3.7.0'
     butterknife_version='8.8.1'
     citypickerview_version='3.1.2'
+    alipayzerosdk_version='1.1'
 }
