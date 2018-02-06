@@ -162,9 +162,16 @@
     的、高斯模糊的等等
 * citypicker/crazyandcoder
   * [crazyandcoder/citypicker: citypicker城市选择器，详细的省市区地址信息，支持仿iOS滚轮实现，一级或者三级列表展示方式。](https://github.com/crazyandcoder/citypicker)
+* [AlipayZeroSdk-支付宝转账工具类](https://github.com/fython/AlipayZeroSdk)
+   * [如何在app中打开支付宝进行打赏开发者 - CSDN博客](http://blog.csdn.net/qq_24531461/article/details/72858868)
+   * 二维码可以在支付宝手机客户端或者网页[支付宝条码支付 - 扫码](https://qr.alipay.com/paipai/personal.htm)
+     获取,得到的后面参数不太一样的,然后使用[在线二维码解码器](http://jiema.wwei.cn/)
+     解析出参数即可
+   * 这里也有很多人推荐使用第三方支付集成库易支付:[EasyPay(易支付)，两分钟集成三种Android支付方式 - 简书](https://www.jianshu.com/p/bd4d44c33532)
+     ,开源项目地址:[yansongda/easyPay - 码云 Gitee.com ](https://gitee.com/yansongda/pay)
 
-PS:debug情况下使用stetho以及Watcher,release版本使用bugstag(原项目使用bughd)
-   ,这里无论是debug还是release都会使用bugstag来提交bug
+PS:debug情况下使用stetho以及Watcher以及bugstag,release版本仅使用bugstag(原
+项目使用bughd)
 
 
 ### 项目开发遇到的问题

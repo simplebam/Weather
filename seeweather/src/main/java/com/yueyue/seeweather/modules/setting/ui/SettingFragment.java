@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.bugtags.library.Bugtags;
 import com.hugo.watcher.Watcher;
 import com.yueyue.seeweather.R;
 import com.yueyue.seeweather.base.BaseApplication;
@@ -26,7 +29,8 @@ import com.yueyue.seeweather.common.C;
 import com.yueyue.seeweather.common.utils.FileSizeUtil;
 import com.yueyue.seeweather.common.utils.FileUtil;
 import com.yueyue.seeweather.common.utils.RxUtil;
-import com.yueyue.seeweather.common.utils.SharedPreferenceUtil;
+import com.yueyue.seeweather.common.utils.SpUtil;
+import com.yueyue.seeweather.common.utils.ToastUtil;
 import com.yueyue.seeweather.component.ImageLoader;
 import com.yueyue.seeweather.component.RxBus;
 import com.yueyue.seeweather.modules.main.domain.ChangeCityEvent;
@@ -41,8 +45,12 @@ import io.reactivex.Observable;
 public class SettingFragment extends PreferenceFragment
         implements Preference.OnPreferenceClickListener,
         Preference.OnPreferenceChangeListener {
+
     private static String TAG = SettingFragment.class.getSimpleName();
-    private SharedPreferenceUtil mSharedPreferenceUtil;
+
+    public static final String APP_FEEDBACK = "app_feedback";//应用反馈
+
+    private SpUtil mSpUtil;
     private Preference mChangeIcons;
     private Preference mChangeUpdate;
     private Preference mClearCache;
@@ -51,33 +59,38 @@ public class SettingFragment extends PreferenceFragment
     private CheckBoxPreference mMultiCityTipsOnOff;
     private CheckBoxPreference mWatcherSwitch;
 
+    private EditTextPreference mAppFeedback;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting);
-        mSharedPreferenceUtil = SharedPreferenceUtil.getInstance();
+        mSpUtil = SpUtil.getInstance();
 
-        mChangeIcons = findPreference(SharedPreferenceUtil.CHANGE_ICONS);
-        mChangeUpdate = findPreference(SharedPreferenceUtil.AUTO_UPDATE);
-        mClearCache = findPreference(SharedPreferenceUtil.CLEAR_CACHE);
+        mChangeIcons = findPreference(SpUtil.CHANGE_ICONS);
+        mChangeUpdate = findPreference(SpUtil.AUTO_UPDATE);
+        mClearCache = findPreference(SpUtil.CLEAR_CACHE);
 
-        mAnimationOnOff = (CheckBoxPreference) findPreference(SharedPreferenceUtil.ANIM_START);
-        mMultiCityTipsOnOff = (CheckBoxPreference) findPreference(SharedPreferenceUtil.MULTI_CITY_TIPS);
-        mNotificationType = (CheckBoxPreference) findPreference(SharedPreferenceUtil.NOTIFICATION_MODEL);
-        mWatcherSwitch = (CheckBoxPreference) findPreference(SharedPreferenceUtil.WATCHER);
+        mAnimationOnOff = (CheckBoxPreference) findPreference(SpUtil.ANIM_START);
+        mMultiCityTipsOnOff = (CheckBoxPreference) findPreference(SpUtil.MULTI_CITY_TIPS);
+        mNotificationType = (CheckBoxPreference) findPreference(SpUtil.NOTIFICATION_MODEL);
+        mWatcherSwitch = (CheckBoxPreference) findPreference(SpUtil.WATCHER);
+
+
+        mAppFeedback = (EditTextPreference) findPreference(APP_FEEDBACK);
 
         mNotificationType.setChecked(
-                SharedPreferenceUtil.getInstance().getNotificationModel() == Notification.FLAG_ONGOING_EVENT);
-        mAnimationOnOff.setChecked(SharedPreferenceUtil.getInstance().getMainAnim());
-        mMultiCityTipsOnOff.setChecked(SharedPreferenceUtil.getInstance().getMultiCityTips());
-        mWatcherSwitch.setChecked(SharedPreferenceUtil.getInstance().getWatcherSwitch());
+                SpUtil.getInstance().getNotificationModel() == Notification.FLAG_ONGOING_EVENT);
+        mAnimationOnOff.setChecked(SpUtil.getInstance().getMainAnim());
+        mMultiCityTipsOnOff.setChecked(SpUtil.getInstance().getMultiCityTips());
+        mWatcherSwitch.setChecked(SpUtil.getInstance().getWatcherSwitch());
         if (Build.VERSION.SDK_INT >= 23 && !Settings.canDrawOverlays(getContext())) {
             mWatcherSwitch.setEnabled(false);
         }
-        mChangeIcons.setSummary(getResources().getStringArray(R.array.icons)[mSharedPreferenceUtil.getIconType()]);
+        mChangeIcons.setSummary(getResources().getStringArray(R.array.icons)[mSpUtil.getIconType()]);
 
         mChangeUpdate.setSummary(
-                mSharedPreferenceUtil.getAutoUpdate() == 0 ? "禁止刷新" : "每" + mSharedPreferenceUtil.getAutoUpdate() + "小时更新");
+                mSpUtil.getAutoUpdate() == 0 ? "禁止刷新" : "每" + mSpUtil.getAutoUpdate() + "小时更新");
         mClearCache.setSummary(FileSizeUtil.getAutoFileOrFilesSize(C.NET_CACHE));
 
         mChangeIcons.setOnPreferenceClickListener(this);
@@ -87,6 +100,7 @@ public class SettingFragment extends PreferenceFragment
         mAnimationOnOff.setOnPreferenceChangeListener(this);
         mMultiCityTipsOnOff.setOnPreferenceChangeListener(this);
         mWatcherSwitch.setOnPreferenceChangeListener(this);
+        mAppFeedback.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -132,7 +146,7 @@ public class SettingFragment extends PreferenceFragment
 
         alertDialog.show();
 
-        switch (mSharedPreferenceUtil.getIconType()) {
+        switch (mSpUtil.getIconType()) {
             case 0:
                 radioTypeOne.setChecked(true);
                 radioTypeTwo.setChecked(false);
@@ -154,7 +168,7 @@ public class SettingFragment extends PreferenceFragment
         });
 
         done.setOnClickListener(v -> {
-            mSharedPreferenceUtil.setIconType(radioTypeOne.isChecked() ? 0 : 1);
+            mSpUtil.setIconType(radioTypeOne.isChecked() ? 0 : 1);
             String[] iconsText = getResources().getStringArray(R.array.icons);
             mChangeIcons.setSummary(radioTypeOne.isChecked() ? iconsText[0] :
                     iconsText[1]);
@@ -185,7 +199,7 @@ public class SettingFragment extends PreferenceFragment
         TextView tvDone = (TextView) dialogLayout.findViewById(R.id.done);
 
         mSeekBar.setMax(24);
-        mSeekBar.setProgress(mSharedPreferenceUtil.getAutoUpdate());
+        mSeekBar.setProgress(mSpUtil.getAutoUpdate());
         tvShowHour.setText(String.format("每%s小时", mSeekBar.getProgress()));
         alertDialog.show();
 
@@ -206,10 +220,10 @@ public class SettingFragment extends PreferenceFragment
             }
         });
         tvDone.setOnClickListener(v -> {
-            mSharedPreferenceUtil.setAutoUpdate(mSeekBar.getProgress());
+            mSpUtil.setAutoUpdate(mSeekBar.getProgress());
             mChangeUpdate.setSummary(
-                    mSharedPreferenceUtil.getAutoUpdate() == 0 ? "禁止刷新"
-                            : String.format(Locale.CHINA, "每%d小时更新", mSharedPreferenceUtil.getAutoUpdate()));
+                    mSpUtil.getAutoUpdate() == 0 ? "禁止刷新"
+                            : String.format(Locale.CHINA, "每%d小时更新", mSpUtil.getAutoUpdate()));
             getActivity().startService(new Intent(getActivity(), AutoUpdateService.class));
             alertDialog.dismiss();
         });
@@ -218,12 +232,16 @@ public class SettingFragment extends PreferenceFragment
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (mAnimationOnOff == preference) {
-            SharedPreferenceUtil.getInstance().setMainAnim((Boolean) newValue);
+            SpUtil.getInstance().setMainAnim((Boolean) newValue);
         } else if (mMultiCityTipsOnOff == preference) {
-            SharedPreferenceUtil.getInstance().setMultiCityTips((Boolean) newValue);
+            SpUtil.getInstance().setMultiCityTips((Boolean) newValue);
         } else if (mNotificationType == preference) {
-            SharedPreferenceUtil.getInstance().setNotificationModel(
+            SpUtil.getInstance().setNotificationModel(
                     (boolean) newValue ? Notification.FLAG_ONGOING_EVENT : Notification.FLAG_AUTO_CANCEL);
+        } else if (mAppFeedback == preference) {
+            if (TextUtils.isEmpty((CharSequence) newValue)) return true;
+            Bugtags.sendFeedback((String) newValue);
+            ToastUtil.showShort(getString(R.string.thanks_for_feedback));
         }
         return true;
     }

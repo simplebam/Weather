@@ -16,7 +16,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.yueyue.seeweather.R;
 import com.yueyue.seeweather.base.BaseViewHolder;
-import com.yueyue.seeweather.common.utils.SharedPreferenceUtil;
+import com.yueyue.seeweather.common.utils.SpUtil;
 import com.yueyue.seeweather.common.utils.Util;
 import com.yueyue.seeweather.component.PLog;
 import com.yueyue.seeweather.modules.main.domain.Weather;
@@ -90,7 +90,7 @@ public class MultiCityAdapter extends RecyclerView.Adapter<MultiCityAdapter.Mult
             }
 
             Glide.with(mContext)
-                .load(SharedPreferenceUtil.getInstance().getInt(weather.now.cond.txt, R.mipmap.none))
+                .load(SpUtil.getInstance().getInt(weather.now.cond.txt, R.mipmap.none))
                 .asBitmap()
                 .into(new SimpleTarget<Bitmap>() {
                     @Override

@@ -17,6 +17,7 @@ android {
 
         buildConfigField "String", "$rootProject.ext.weather.name", "\"$rootProject.ext.weather.value\""
         buildConfigField "String", "$rootProject.ext.fir.name", "\"$rootProject.ext.fir.value\""
+        buildConfigField "String", "$rootProject.ext.alipay.name", "\"$rootProject.ext.alipay.value\""
 
         ndk {
             // bugtags设置支持的 SO 库构架，一般而言，取你所有的库支持的构架的`交集`。
@@ -114,6 +115,9 @@ dependencies {
 
     //citypicker https://github.com/crazyandcoder/citypicker
     compile "liji.library.dev:citypickerview:$rootProject.ext.citypickerview_version"
+
+    //AlipayZeroSdk https://github.com/fython/AlipayZeroSdk
+    compile "moe.feng:AlipayZeroSdk:$rootProject.ext.alipayzerosdk_version"
 
     //assist相关的
 

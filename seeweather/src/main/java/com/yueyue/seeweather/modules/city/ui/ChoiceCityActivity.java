@@ -16,7 +16,7 @@ import com.yueyue.seeweather.base.ToolbarActivity;
 import com.yueyue.seeweather.common.C;
 import com.yueyue.seeweather.common.Irrelevant;
 import com.yueyue.seeweather.common.utils.RxUtil;
-import com.yueyue.seeweather.common.utils.SharedPreferenceUtil;
+import com.yueyue.seeweather.common.utils.SpUtil;
 import com.yueyue.seeweather.common.utils.Util;
 import com.yueyue.seeweather.component.OrmLite;
 import com.yueyue.seeweather.component.RxBus;
@@ -80,7 +80,7 @@ public class ChoiceCityActivity extends ToolbarActivity {
 
         Intent intent = getIntent();
         isChecked = intent.getBooleanExtra(C.MULTI_CHECK, false);
-        if (isChecked && SharedPreferenceUtil.getInstance().getBoolean("Tips", true)) {
+        if (isChecked && SpUtil.getInstance().getBoolean("Tips", true)) {
             showTips();
         }
     }
@@ -115,7 +115,7 @@ public class ChoiceCityActivity extends ToolbarActivity {
                     OrmLite.getInstance().save(new CityORM(city));
                     RxBus.getDefault().post(new MultiUpdateEvent());
                 } else {
-                    SharedPreferenceUtil.getInstance().setCityName(city);
+                    SpUtil.getInstance().setCityName(city);
                     RxBus.getDefault().post(new ChangeCityEvent());
                 }
                 quit();
@@ -221,7 +221,7 @@ public class ChoiceCityActivity extends ToolbarActivity {
                 .setMessage("您现在是多城市管理模式,直接点击即可新增城市.如果暂时不需要添加,"
                         + "在右上选项中关闭即可像往常一样操作.\n因为 api 次数限制的影响,多城市列表最多三个城市.(๑′ᴗ‵๑)")
                 .setPositiveButton("明白", (dialog, which) -> dialog.dismiss())
-                .setNegativeButton("不再提示", (dialog, which) -> SharedPreferenceUtil.getInstance().putBoolean("Tips", false))
+                .setNegativeButton("不再提示", (dialog, which) -> SpUtil.getInstance().putBoolean("Tips", false))
                 .setCancelable(false)
                 .show();
     }

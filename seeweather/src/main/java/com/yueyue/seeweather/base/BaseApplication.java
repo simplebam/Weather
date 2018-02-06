@@ -13,14 +13,11 @@ import com.squareup.leakcanary.RefWatcher;
 import com.yueyue.seeweather.BuildConfig;
 import com.yueyue.seeweather.component.CrashHandler;
 
-import im.fir.sdk.FIR;
-
 public class BaseApplication extends Application {
 
     private static String sCacheDir;
     private static Context sAppContext;
 
-    //在自己的Application中添加如下代码
     private RefWatcher mRefWatcher;
 
     // TODO: 16/8/1 这里的夜间模式 UI 有些没有适配好 暂时放弃夜间模式
@@ -32,11 +29,14 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        sAppContext = getApplicationContext();
-        CrashHandler.init(new CrashHandler(getApplicationContext()));
-        if (!BuildConfig.DEBUG) {
-            FIR.init(this);
-        } else {
+        sAppContext = this;
+        CrashHandler.init(new CrashHandler(this));
+
+//        if (!BuildConfig.DEBUG) {
+//            FIR.init(this);
+//        }
+
+        if (BuildConfig.DEBUG) {
             Watcher.getInstance().start(this);
             Stetho.initializeWithDefaults(this);
         }
@@ -47,12 +47,6 @@ public class BaseApplication extends Application {
 
         BlockCanary.install(this, new AppBlockCanaryContext()).start();
         mRefWatcher = LeakCanary.install(this);
-
-
-        /**
-         * 预先加载三级列表显示省市区的数据
-         */
-//        CityListLoader.getInstance().loadProData(this);
 
 
 //         /*
@@ -84,7 +78,7 @@ public class BaseApplication extends Application {
     }
 
 
-    //在自己的Application中添加如下代码
+
     public static RefWatcher getRefWatcher(Context context) {
         BaseApplication application = (BaseApplication) context.getApplicationContext();
         return application.mRefWatcher;

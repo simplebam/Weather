@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import com.yueyue.seeweather.R;
-import com.yueyue.seeweather.common.utils.SharedPreferenceUtil;
+import com.yueyue.seeweather.common.utils.SpUtil;
 import com.yueyue.seeweather.modules.main.domain.Weather;
 import com.yueyue.seeweather.modules.main.ui.MainActivity;
 
@@ -32,9 +32,9 @@ public class NotificationHelper {
         Notification notification = builder.setContentIntent(pendingIntent)
                 .setContentTitle(weather.basic.city)
                 .setContentText(String.format("%s 当前温度: %s℃ ", weather.now.cond.txt, weather.now.tmp))
-                .setSmallIcon(SharedPreferenceUtil.getInstance().getInt(weather.now.cond.txt, R.mipmap.none))
+                .setSmallIcon(SpUtil.getInstance().getInt(weather.now.cond.txt, R.mipmap.none))
                 .build();
-        notification.flags = SharedPreferenceUtil.getInstance().getNotificationModel();
+        notification.flags = SpUtil.getInstance().getNotificationModel();
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(NOTIFICATION_ID, notification);
     }

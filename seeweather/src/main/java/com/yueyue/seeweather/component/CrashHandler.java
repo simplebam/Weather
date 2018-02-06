@@ -1,7 +1,7 @@
 package com.yueyue.seeweather.component;
 
 import android.content.Context;
-import com.yueyue.seeweather.common.utils.SharedPreferenceUtil;
+import com.yueyue.seeweather.common.utils.SpUtil;
 import com.yueyue.seeweather.common.utils.VersionUtil;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -39,7 +39,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         PLog.e(TAG, getCrashInfo(ex));
 
         // T崩溃后自动初始化数据
-        SharedPreferenceUtil.getInstance().setCityName("北京");
+        SpUtil.getInstance().setCityName("北京");
         OrmLite.getInstance().deleteDatabase();
         // 调用系统错误机制
         mDefaultHandler.uncaughtException(thread, ex);

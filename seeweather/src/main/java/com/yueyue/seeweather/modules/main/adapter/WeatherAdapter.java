@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.yueyue.seeweather.R;
 import com.yueyue.seeweather.base.BaseViewHolder;
-import com.yueyue.seeweather.common.utils.SharedPreferenceUtil;
+import com.yueyue.seeweather.common.utils.SpUtil;
 import com.yueyue.seeweather.common.utils.TimeUitl;
 import com.yueyue.seeweather.common.utils.Util;
 import com.yueyue.seeweather.component.AnimRecyclerViewAdapter;
@@ -92,7 +92,7 @@ public class WeatherAdapter extends AnimRecyclerViewAdapter<RecyclerView.ViewHol
             default:
                 break;
         }
-        if (SharedPreferenceUtil.getInstance().getMainAnim()) {
+        if (SpUtil.getInstance().getMainAnim()) {
             showItemAnim(holder.itemView, position);
         }
     }
@@ -135,7 +135,7 @@ public class WeatherAdapter extends AnimRecyclerViewAdapter<RecyclerView.ViewHol
                 tempPm.setText(String.format("PM2.5: %s μg/m³", Util.safeText(weather.aqi.city.pm25)));
                 tempQuality.setText(String.format("空气质量：%s", Util.safeText(weather.aqi.city.qlty)));
                 ImageLoader.load(itemView.getContext(),
-                        SharedPreferenceUtil.getInstance().getInt(weather.now.cond.txt, R.mipmap.none),
+                        SpUtil.getInstance().getInt(weather.now.cond.txt, R.mipmap.none),
                         weatherIcon);
             } catch (Exception e) {
                 PLog.e(TAG, e.toString());
@@ -275,7 +275,7 @@ public class WeatherAdapter extends AnimRecyclerViewAdapter<RecyclerView.ViewHol
                         }
                     }
                     ImageLoader.load(mContext,
-                            SharedPreferenceUtil.getInstance().getInt(weather.dailyForecast.get(i).cond.txtDay, R.mipmap.none),
+                            SpUtil.getInstance().getInt(weather.dailyForecast.get(i).cond.txtDay, R.mipmap.none),
                             forecastIcon[i]);
                     forecastTemp[i].setText(
                             String.format("%s℃ - %s℃",

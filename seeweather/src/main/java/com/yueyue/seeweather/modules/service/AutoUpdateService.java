@@ -4,7 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
-import com.yueyue.seeweather.common.utils.SharedPreferenceUtil;
+import com.yueyue.seeweather.common.utils.SpUtil;
 import com.yueyue.seeweather.component.NotificationHelper;
 import com.yueyue.seeweather.component.RetrofitSingleton;
 
@@ -41,8 +41,8 @@ public class AutoUpdateService extends Service {
             unSubscribed();
             if (mIsUnSubscribed) {
                 unSubscribed();
-                if (SharedPreferenceUtil.getInstance().getAutoUpdate() != 0) {
-                    mDisposable = Observable.interval(SharedPreferenceUtil.getInstance().getAutoUpdate(), TimeUnit.HOURS)
+                if (SpUtil.getInstance().getAutoUpdate() != 0) {
+                    mDisposable = Observable.interval(SpUtil.getInstance().getAutoUpdate(), TimeUnit.HOURS)
                         .doOnNext(aLong -> {
                             mIsUnSubscribed = false;
                             fetchDataByNetWork();
@@ -67,7 +67,7 @@ public class AutoUpdateService extends Service {
     }
 
     private void fetchDataByNetWork() {
-        String cityName = SharedPreferenceUtil.getInstance().getCityName();
+        String cityName = SpUtil.getInstance().getCityName();
         RetrofitSingleton.getInstance()
             .fetchWeather(cityName)
             .subscribe(weather -> NotificationHelper.showWeatherNotification(AutoUpdateService.this, weather));

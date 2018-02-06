@@ -11,7 +11,7 @@ import com.yueyue.seeweather.base.BaseApplication;
  * <p>
  * 设置相关 包括 sp 的写入
  */
-public class SharedPreferenceUtil {
+public class SpUtil {
 
     public static final String CITY_NAME = "city_name"; //选择城市
     public static final String HOUR = "current_hour"; //当前小时
@@ -24,23 +24,24 @@ public class SharedPreferenceUtil {
     public static final String MULTI_CITY_TIPS = "multi_city_tips";//多城市管理提醒设置
     public static final String WATCHER = "watcher";//监控开关
 
+
     public static int ONE_HOUR = 1000 * 60 * 60;//60分钟
 
     private SharedPreferences mPrefs;
 
-    public static SharedPreferenceUtil getInstance() {
+    public static SpUtil getInstance() {
         return SPHolder.sInstance;
     }
 
     private static class SPHolder {
-        private static final SharedPreferenceUtil sInstance = new SharedPreferenceUtil();
+        private static final SpUtil sInstance = new SpUtil();
     }
 
-    private SharedPreferenceUtil() {
+    private SpUtil() {
         mPrefs = BaseApplication.getAppContext().getSharedPreferences("setting", Context.MODE_PRIVATE);
     }
 
-    public SharedPreferenceUtil putInt(String key, int value) {
+    public SpUtil putInt(String key, int value) {
         mPrefs.edit().putInt(key, value).apply();
         return this;
     }
@@ -49,7 +50,7 @@ public class SharedPreferenceUtil {
         return mPrefs.getInt(key, defValue);
     }
 
-    public SharedPreferenceUtil putString(String key, String value) {
+    public SpUtil putString(String key, String value) {
         mPrefs.edit().putString(key, value).apply();
         return this;
     }
@@ -58,7 +59,7 @@ public class SharedPreferenceUtil {
         return mPrefs.getString(key, defValue);
     }
 
-    public SharedPreferenceUtil putBoolean(String key, boolean value) {
+    public SpUtil putBoolean(String key, boolean value) {
         mPrefs.edit().putBoolean(key, value).apply();
         return this;
     }

@@ -28,7 +28,7 @@ import com.yueyue.seeweather.R;
 import com.yueyue.seeweather.base.BaseActivity;
 import com.yueyue.seeweather.common.utils.DoubleClickExit;
 import com.yueyue.seeweather.common.utils.RxDrawer;
-import com.yueyue.seeweather.common.utils.SharedPreferenceUtil;
+import com.yueyue.seeweather.common.utils.SpUtil;
 import com.yueyue.seeweather.common.utils.ToastUtil;
 import com.yueyue.seeweather.common.utils.Util;
 import com.yueyue.seeweather.component.OrmLite;
@@ -170,35 +170,35 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      * 初始化 Icons
      */
     private void initIcon() {
-        if (SharedPreferenceUtil.getInstance().getIconType() == 0) {
-            SharedPreferenceUtil.getInstance().putInt("未知", R.mipmap.none);
-            SharedPreferenceUtil.getInstance().putInt("晴", R.mipmap.type_one_sunny);
-            SharedPreferenceUtil.getInstance().putInt("阴", R.mipmap.type_one_cloudy);
-            SharedPreferenceUtil.getInstance().putInt("多云", R.mipmap.type_one_cloudy);
-            SharedPreferenceUtil.getInstance().putInt("少云", R.mipmap.type_one_cloudy);
-            SharedPreferenceUtil.getInstance().putInt("晴间多云", R.mipmap.type_one_cloudytosunny);
-            SharedPreferenceUtil.getInstance().putInt("小雨", R.mipmap.type_one_light_rain);
-            SharedPreferenceUtil.getInstance().putInt("中雨", R.mipmap.type_one_light_rain);
-            SharedPreferenceUtil.getInstance().putInt("大雨", R.mipmap.type_one_heavy_rain);
-            SharedPreferenceUtil.getInstance().putInt("阵雨", R.mipmap.type_one_thunderstorm);
-            SharedPreferenceUtil.getInstance().putInt("雷阵雨", R.mipmap.type_one_thunder_rain);
-            SharedPreferenceUtil.getInstance().putInt("霾", R.mipmap.type_one_fog);
-            SharedPreferenceUtil.getInstance().putInt("雾", R.mipmap.type_one_fog);
+        if (SpUtil.getInstance().getIconType() == 0) {
+            SpUtil.getInstance().putInt("未知", R.mipmap.none);
+            SpUtil.getInstance().putInt("晴", R.mipmap.type_one_sunny);
+            SpUtil.getInstance().putInt("阴", R.mipmap.type_one_cloudy);
+            SpUtil.getInstance().putInt("多云", R.mipmap.type_one_cloudy);
+            SpUtil.getInstance().putInt("少云", R.mipmap.type_one_cloudy);
+            SpUtil.getInstance().putInt("晴间多云", R.mipmap.type_one_cloudytosunny);
+            SpUtil.getInstance().putInt("小雨", R.mipmap.type_one_light_rain);
+            SpUtil.getInstance().putInt("中雨", R.mipmap.type_one_light_rain);
+            SpUtil.getInstance().putInt("大雨", R.mipmap.type_one_heavy_rain);
+            SpUtil.getInstance().putInt("阵雨", R.mipmap.type_one_thunderstorm);
+            SpUtil.getInstance().putInt("雷阵雨", R.mipmap.type_one_thunder_rain);
+            SpUtil.getInstance().putInt("霾", R.mipmap.type_one_fog);
+            SpUtil.getInstance().putInt("雾", R.mipmap.type_one_fog);
         } else {
-            SharedPreferenceUtil.getInstance().putInt("未知", R.mipmap.none);
-            SharedPreferenceUtil.getInstance().putInt("晴", R.mipmap.type_two_sunny);
-            SharedPreferenceUtil.getInstance().putInt("阴", R.mipmap.type_two_cloudy);
-            SharedPreferenceUtil.getInstance().putInt("多云", R.mipmap.type_two_cloudy);
-            SharedPreferenceUtil.getInstance().putInt("少云", R.mipmap.type_two_cloudy);
-            SharedPreferenceUtil.getInstance().putInt("晴间多云", R.mipmap.type_two_cloudytosunny);
-            SharedPreferenceUtil.getInstance().putInt("小雨", R.mipmap.type_two_light_rain);
-            SharedPreferenceUtil.getInstance().putInt("中雨", R.mipmap.type_two_rain);
-            SharedPreferenceUtil.getInstance().putInt("大雨", R.mipmap.type_two_rain);
-            SharedPreferenceUtil.getInstance().putInt("阵雨", R.mipmap.type_two_rain);
-            SharedPreferenceUtil.getInstance().putInt("雷阵雨", R.mipmap.type_two_thunderstorm);
-            SharedPreferenceUtil.getInstance().putInt("霾", R.mipmap.type_two_haze);
-            SharedPreferenceUtil.getInstance().putInt("雾", R.mipmap.type_two_fog);
-            SharedPreferenceUtil.getInstance().putInt("雨夹雪", R.mipmap.type_two_snowrain);
+            SpUtil.getInstance().putInt("未知", R.mipmap.none);
+            SpUtil.getInstance().putInt("晴", R.mipmap.type_two_sunny);
+            SpUtil.getInstance().putInt("阴", R.mipmap.type_two_cloudy);
+            SpUtil.getInstance().putInt("多云", R.mipmap.type_two_cloudy);
+            SpUtil.getInstance().putInt("少云", R.mipmap.type_two_cloudy);
+            SpUtil.getInstance().putInt("晴间多云", R.mipmap.type_two_cloudytosunny);
+            SpUtil.getInstance().putInt("小雨", R.mipmap.type_two_light_rain);
+            SpUtil.getInstance().putInt("中雨", R.mipmap.type_two_rain);
+            SpUtil.getInstance().putInt("大雨", R.mipmap.type_two_rain);
+            SpUtil.getInstance().putInt("阵雨", R.mipmap.type_two_rain);
+            SpUtil.getInstance().putInt("雷阵雨", R.mipmap.type_two_thunderstorm);
+            SpUtil.getInstance().putInt("霾", R.mipmap.type_two_haze);
+            SpUtil.getInstance().putInt("雾", R.mipmap.type_two_fog);
+            SpUtil.getInstance().putInt("雨夹雪", R.mipmap.type_two_snowrain);
         }
     }
 
@@ -234,7 +234,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 //                Intent intent = new Intent(MainActivity.this, ChoiceCityActivity.class);
 //                intent.putExtra(C.MULTI_CHECK, true);
 //                CircularAnimUtil.startActivity(MainActivity.this, intent, mFab, R.color.colorPrimary);
-                if (SharedPreferenceUtil.getInstance().getMultiCityTips()) {
+                if (SpUtil.getInstance().getMultiCityTips()) {
                     showTips();
                 } else {
                     showPicker(true);
@@ -262,7 +262,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                     showPicker(true);
                 })
                 .setNegativeButton("不再提示", (dialog, which) -> {
-                    SharedPreferenceUtil.getInstance().setMultiCityTips(false);
+                    SpUtil.getInstance().setMultiCityTips(false);
                     showPicker(true);
                 })
                 .setCancelable(false)
@@ -281,7 +281,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                         OrmLite.getInstance().save(new CityORM(cityStr));
                         RxBus.getDefault().post(new MultiUpdateEvent());
                     } else {
-                        SharedPreferenceUtil.getInstance().setCityName(cityStr);
+                        SpUtil.getInstance().setCityName(cityStr);
                         RxBus.getDefault().post(new ChangeCityEvent());
                     }
                 }

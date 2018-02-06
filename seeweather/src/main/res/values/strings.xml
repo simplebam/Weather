@@ -11,12 +11,18 @@
     <string name="api_error">出了点小问题，别担心，( •̀ .̫ •́ )✧</string>
     <string name="version_name">就看天气 Version-</string>
     <string name="can_not_find_version_name">找不到版本号</string>
-    <string name="share_txt">欢迎使用“就看天气”，希望每天都是好心情，您可以在http://www.wandoujia.com/apps/com.xiecc.seeWeather下载</string>
+    <string name="share_txt">欢迎使用“就看天气”，希望每天都是好心情，您可以在https://fir.im/kbdc?release_id=5a79a152959d69265faa6d0f下载</string>
     <string name="share_app">分享-就看天气</string>
+    <string name="permission_statement">拒绝电话权限将无法获取设备标识以感谢作者的辛苦劳动）</string>
+    <string name="transfer_to_author">准备转账给作者啦</string>
+    <string name="alipay_not_found">您没有安装支付宝，请安装支付宝再赞助哈</string>
+    <string name="feedback_description">如果你有好的idea或建议，不要犹豫，告诉我吧~</string>
+    <string name="thanks_for_feedback">感谢您的反馈</string>
     <string name="alipay">xcc3641@163.com</string>
     <string name="license">Copyright 2016 HugoXie  Licensed under the Apache License, Version 2.0 (the \"License\")</string>
-    <string name="app_html">https://github.com/xcc3641/SeeWeather</string>
-    <string name="readme">https://github.com/xcc3641/SeeWeather/blob/master/README.md</string>
+    <string name="app_html">https://github.com/simplebam/Weather</string>
+    <string name="blog_html">http://blog.csdn.net/simplebam</string>
+    <string name="readme">https://github.com/simplebam/Weather/blob/master/seeweather/README.md</string>
 
     <string name="change_icon">更换图标</string>
     <string name="nav_city">选择城市</string>

@@ -1,5 +1,6 @@
 package com.yueyue.seeweather.modules.about.ui;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,14 +12,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.yueyue.seeweather.R;
 import com.yueyue.seeweather.base.BaseActivity;
+import com.yueyue.seeweather.base.BaseApplication;
+import com.yueyue.seeweather.common.C;
+import com.yueyue.seeweather.common.utils.Sharer;
 import com.yueyue.seeweather.common.utils.StatusBarUtil;
-import com.yueyue.seeweather.common.utils.Util;
+import com.yueyue.seeweather.common.utils.ToastUtil;
 import com.yueyue.seeweather.common.utils.VersionUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import moe.feng.alipay.zerosdk.AlipayZeroSdk;
 
 public class AboutActivity extends BaseActivity {
 
@@ -68,17 +74,16 @@ public class AboutActivity extends BaseActivity {
                 goToHtml(getString(R.string.app_html));
                 break;
             case R.id.bt_blog:
-                goToHtml("http://imxie.itscoder.com");
+                goToHtml(getString(R.string.blog_html));
                 break;
             case R.id.bt_pay:
-                Util.copyToClipboard(getString(R.string.alipay), this);
+//                Util.copyToClipboard(getString(R.string.alipay), this);
+                donate();
                 break;
             case R.id.bt_share:
-                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_txt));
-                startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_app)));
+                Sharer.shareText(AboutActivity.this,
+                        getString(R.string.share_app),
+                        getString(R.string.share_txt));
                 break;
             case R.id.bt_bug:
                 goToHtml(getString(R.string.bugTableUrl));
@@ -87,6 +92,25 @@ public class AboutActivity extends BaseActivity {
                 VersionUtil.checkVersion(this, true);
                 break;
         }
+    }
+
+    private void donate() {
+
+        new RxPermissions(this)
+                .request(Manifest.permission.READ_PHONE_STATE)
+                .subscribe(granted -> {
+                    if (granted) {
+                        if (AlipayZeroSdk.hasInstalledAlipayClient(BaseApplication.getAppContext())) {
+                            ToastUtil.showShort(BaseApplication.getAppContext().getResources().getText(R.string.transfer_to_author).toString());
+                            AlipayZeroSdk.startAlipayClient(AboutActivity.this, C.ALI_PAY);
+                        } else {
+                            ToastUtil.showShort(BaseApplication.getAppContext().getResources().getText(R.string.alipay_not_found).toString());
+                        }
+
+                    } else {
+                        ToastUtil.showShort(getString(R.string.permission_statement));
+                    }
+                });
     }
 
     private void goToHtml(String url) {
