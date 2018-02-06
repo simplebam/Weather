@@ -36,9 +36,6 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="08595dfda1c2c6e6c34dd8db3aee4312"/>
-        <meta-data
-            android:name="BUG_HD_SDK_GENERAL_KEY"
-            android:value="6c5241a92d395baa70c227300f5db822"/>
 
         <service android:name="com.amap.api.location.APSService"/>
         <service android:name="com.hugo.watcher.WatcherService"/>
