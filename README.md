@@ -33,6 +33,9 @@ App体验:[就看天气 - fir.im](https://fir.im/kbdc?release_id=5a79a152959d692
 原作者GitHub项目地址:[li-yu/FakeWeather: 『假装看天气』─── 天气预报 & 公交
 查询 & 资讯阅读 & 妹纸福利 的 Android 客户端](https://github.com/li-yu/FakeWeather)
 
+App体验:[http://7xp1a1.com1.z0.glb.clouddn.com/FakeWeather/FakeWeather_v1.3.2_20180202.apk](http://7xp1a1.com1.z0.glb.clouddn.com/FakeWeather/FakeWeather_v1.3.2_20180202.apk)
+PS:这个项目需要等到我完成毕业设计再弄,由于它推荐度不是很高,怕坑
+
 
 ### 最理想的天气App
 * [zifangsky/WeatherSpider: 天气爬虫（全国城镇天气自动定时抓取更新，并开放
@@ -88,7 +91,6 @@ PS:我基础比较薄弱,只会简单搭建一个web服务器,很多时候我都
   * 只保留了 Knowledge 中的美图功能，结构清晰更适合新手学习
   * 使用BRVAH，妈妈再也不用担心我写adapter头疼的问题了
 * 论文准备模仿的App:[我的音乐-Musicoco 音乐](https://github.com/DuanJiaNing/Musicoco)
-
 
 
 ## 推荐阅读

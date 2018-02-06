@@ -77,7 +77,6 @@ public class AboutActivity extends BaseActivity {
                 goToHtml(getString(R.string.blog_html));
                 break;
             case R.id.bt_pay:
-//                Util.copyToClipboard(getString(R.string.alipay), this);
                 donate();
                 break;
             case R.id.bt_share:
@@ -86,7 +85,7 @@ public class AboutActivity extends BaseActivity {
                         getString(R.string.share_txt));
                 break;
             case R.id.bt_bug:
-                goToHtml(getString(R.string.bugTableUrl));
+                ToastUtil.showShort(getString(R.string.bug_tips));
                 break;
             case R.id.bt_update:
                 VersionUtil.checkVersion(this, true);

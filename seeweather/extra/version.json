@@ -1,0 +1,20 @@
+//这里主要用于版本检查更新使用,至于https://fir.im/docs/version_detection
+//这里需要//http://api.fir.im/apps/latest/{id} ? api={api}
+// 第一个{id}文档里面说是应用ID，可在"应用管理"->"基本信息"查看
+// 第二个{api}长度为 32, 用户在 fir 的 api_token
+//http://api.fir.im/apps/latest/5630e5f1f2fc425c52000006?api_token=7db041d0c3013b63e4bed2a554f02d85
+{
+  "binary": {
+    "fsize": 4380886
+  },
+  "build": "34",
+  "changelog": "- [新增] 天气接口升级- - -开始持续更新...",
+  "direct_install_url": "http://download.fir.im/v2/app/install/5630e5f1f2fc425c52000006?download_token=4fc087ec1c755290385ee59f71b3937a&source=update",
+  "installUrl": "http://download.fir.im/v2/app/install/5630e5f1f2fc425c52000006?download_token=4fc087ec1c755290385ee59f71b3937a&source=update",
+  "install_url": "http://download.fir.im/v2/app/install/5630e5f1f2fc425c52000006?download_token=4fc087ec1c755290385ee59f71b3937a&source=update",
+  "name": "就看天气",
+  "update_url": "http://fir.im/seeWeather",
+  "updated_at": 1494244628,
+  "version": "34",
+  "versionShort": "2.3.1"
+}
