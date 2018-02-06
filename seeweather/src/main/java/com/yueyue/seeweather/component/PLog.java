@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by zk on 2015/12/24.
  * 使用此Log类将会把信息打印在日志文件和LogCat中
- * <p>
+ *
  * update by hugo on 2016/5/5 thanks for bruce
  */
 public class PLog {
@@ -98,13 +98,13 @@ public class PLog {
         isExist(PATH);
         //isDel();
         String needWriteMessage = "\r\n"
-                + TimeUitl.getNowMDHMSTime()
-                + "\r\n"
-                + mylogtype
-                + "    "
-                + tag
-                + "\r\n"
-                + msg;
+            + TimeUitl.getNowMDHMSTime()
+            + "\r\n"
+            + mylogtype
+            + "    "
+            + tag
+            + "\r\n"
+            + msg;
         File file = new File(PATH, PLOG_FILE_NAME);
         try {
             FileWriter filerWriter = new FileWriter(file, true);

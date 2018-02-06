@@ -6,10 +6,9 @@ import android.content.SharedPreferences;
 
 import com.yueyue.seeweather.base.BaseApplication;
 
-
 /**
  * Created by hugo on 2016/2/19 0019.
- *
+ * <p>
  * 设置相关 包括 sp 的写入
  */
 public class SharedPreferenceUtil {
@@ -20,9 +19,10 @@ public class SharedPreferenceUtil {
     public static final String CHANGE_ICONS = "change_icons"; //切换图标
     public static final String CLEAR_CACHE = "clear_cache"; //清空缓存
     public static final String AUTO_UPDATE = "change_update_time"; //自动更新时长
-    public static final String NOTIFICATION_MODEL = "notification_model";
-    public static final String ANIM_START = "animation_start";
-    public static final String WATCHER = "watcher";
+    public static final String NOTIFICATION_MODEL = "notification_model";//通知栏常驻
+    public static final String ANIM_START = "animation_start";//首页item动画
+    public static final String MULTI_CITY_TIPS = "multi_city_tips";//多城市管理提醒设置
+    public static final String WATCHER = "watcher";//监控开关
 
     public static int ONE_HOUR = 1000 * 60 * 60;//60分钟
 
@@ -122,6 +122,18 @@ public class SharedPreferenceUtil {
         return mPrefs.getBoolean(ANIM_START, false);
     }
 
+    // 多城市管理Tips显示 默认开启
+
+    public void setMultiCityTips(boolean b) {
+        mPrefs.edit().putBoolean(MULTI_CITY_TIPS, b).apply();
+    }
+
+    public boolean getMultiCityTips() {
+        return mPrefs.getBoolean(MULTI_CITY_TIPS, true);
+    }
+
+
+    // 监听开关
     public void setWatcherSwitcher(boolean b) {
         mPrefs.edit().putBoolean(WATCHER, b).apply();
     }

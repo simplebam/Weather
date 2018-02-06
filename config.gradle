@@ -3,12 +3,12 @@ ext {
             // Sdk and tools
             buildToolsVersion: '27.0.2',
             supportVersion   : '27.0.2',
-            minSdkVersion    : 19,
+            minSdkVersion    : 21,
             compileSdkVersion: 27,
             targetSdkVersion : 27,
             applicationId    : "com.yueyue.seeweather",
-            versionCode      : 1,
-            versionName      : "1.0",
+            versionCode      : 2,
+            versionName      : "2.0",
             resConfigs       : "zh",
     ]
 
@@ -37,6 +37,7 @@ ext {
     gson_version='2.8.2'
     retrofit_version='2.3.0'
     okhttp_version='3.9.1'
-    glide_version='4.6.0'
+    glide_version='3.7.0'
     butterknife_version='8.8.1'
+    citypickerview_version='3.1.2'
 }

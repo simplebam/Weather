@@ -82,6 +82,15 @@ PS:我基础比较薄弱,只会简单搭建一个web服务器,很多时候我都
     还是选择稳定升级知识好一点
 
 
+## 推荐项目
+* [DanteAndroid/Beauty: Just watch girls.](https://github.com/DanteAndroid/Beauty)
+  * 推荐理由:没有MVP繁琐,但里面却涉及了Retrofit + Rxjava，让网络请求和解析数据更轻松、直观
+  * 只保留了 Knowledge 中的美图功能，结构清晰更适合新手学习
+  * 使用BRVAH，妈妈再也不用担心我写adapter头疼的问题了
+* 论文准备模仿的App:[我的音乐-Musicoco 音乐](https://github.com/DuanJiaNing/Musicoco)
+
+
+
 ## 推荐阅读
 * [Android开发进阶1-思维改变-如何知道我需要学什么（上）](https://mp.weixin.qq.com/s/eG6Gnfm_cevPnNrFa7ljUQ)
 * [Android开发进阶2-招聘信息分析-如何知道我需要学什么（下）](https://mp.weixin.qq.com/s/ieQuNXLgrB3KiZGRqmqDKA)

@@ -1,10 +1,8 @@
 package com.yueyue.seeweather.component;
 
 import android.content.Context;
-
 import com.yueyue.seeweather.common.utils.SharedPreferenceUtil;
 import com.yueyue.seeweather.common.utils.VersionUtil;
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -64,6 +62,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      *            http://blog.csdn.net/gjy211/article/details/52015198
      */
     private String collectCrashDeviceInfo() {
+
         String versionName = VersionUtil.getVersion(mContext);
         String model = android.os.Build.MODEL;//机型
         String androidVersion = android.os.Build.VERSION.RELEASE;

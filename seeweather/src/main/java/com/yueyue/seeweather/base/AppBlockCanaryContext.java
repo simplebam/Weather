@@ -1,10 +1,8 @@
 package com.yueyue.seeweather.base;
 
 import android.content.Context;
-
 import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.github.moduth.blockcanary.internal.BlockInfo;
-
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
