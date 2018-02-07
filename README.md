@@ -28,6 +28,12 @@ App体验:[就看天气 - fir.im](https://fir.im/kbdc)<br/>
 项目中的Project/seeweather_config.gradle配置仅仅属于SeeWeather的,模仿原项目,懒得改而已
 
 
+### MVI框架学习Demo
+* [MVI设计模式尝鲜（实现一个联网的天气查询Dome） - 简书](https://www.jianshu.com/p/dcb7b536066c)
+* [［译］为什么使用MVI模式（MVI编写响应式安卓APP入门系列第一部分MODEL） - 简书](https://www.jianshu.com/p/f875e24acf95)
+PS:框架学习还是需要等我学了MVP之后再来码这个项目
+
+
 ### 假装看天气
 
 原作者GitHub项目地址:[li-yu/FakeWeather: 『假装看天气』─── 天气预报 & 公交
