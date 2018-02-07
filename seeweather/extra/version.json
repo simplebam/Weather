@@ -5,16 +5,16 @@
 //http://api.fir.im/apps/latest/5630e5f1f2fc425c52000006?api_token=7db041d0c3013b63e4bed2a554f02d85
 {
   "binary": {
-    "fsize": 4380886
+    "fsize": 5489880
   },
-  "build": "34",
-  "changelog": "- [新增] 天气接口升级- - -开始持续更新...",
-  "direct_install_url": "http://download.fir.im/v2/app/install/5630e5f1f2fc425c52000006?download_token=4fc087ec1c755290385ee59f71b3937a&source=update",
-  "installUrl": "http://download.fir.im/v2/app/install/5630e5f1f2fc425c52000006?download_token=4fc087ec1c755290385ee59f71b3937a&source=update",
-  "install_url": "http://download.fir.im/v2/app/install/5630e5f1f2fc425c52000006?download_token=4fc087ec1c755290385ee59f71b3937a&source=update",
+  "build": "3",
+  "changelog": "修复了一些小bug",
+  "direct_install_url": "http://download.fir.im/v2/app/install/5a7425c1ca87a877b1a81c2a?download_token=b0dd9c05eb725d45639729e840764c14&source=update",
+  "installUrl": "http://download.fir.im/v2/app/install/5a7425c1ca87a877b1a81c2a?download_token=b0dd9c05eb725d45639729e840764c14&source=update",
+  "install_url": "http://download.fir.im/v2/app/install/5a7425c1ca87a877b1a81c2a?download_token=b0dd9c05eb725d45639729e840764c14&source=update",
   "name": "就看天气",
-  "update_url": "http://fir.im/seeWeather",
-  "updated_at": 1494244628,
-  "version": "34",
-  "versionShort": "2.3.1"
+  "update_url": "http://fir.im/kbdc",
+  "updated_at": 1517942284,
+  "version": "3",
+  "versionShort": "3.3"
 }
