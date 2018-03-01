@@ -34,12 +34,12 @@ App体验:[就看天气 - fir.im](https://fir.im/kbdc)<br/>
 PS:框架学习还是需要等我学了MVP之后再来码这个项目
 
 
-### 假装看天气
+### KnowWeather
+//SilenceDut/KnowWeather:
+原作者GitHub项目地址:[SilenceDut/KnowWeather: 一款美观、实用的天气app。实践
+了模块化架构 和 Android Architecture Components](https://github.com/SilenceDut/KnowWeather)
 
-原作者GitHub项目地址:[li-yu/FakeWeather: 『假装看天气』─── 天气预报 & 公交
-查询 & 资讯阅读 & 妹纸福利 的 Android 客户端](https://github.com/li-yu/FakeWeather)
-
-App体验:[http://7xp1a1.com1.z0.glb.clouddn.com/FakeWeather/FakeWeather_v1.3.2_20180202.apk](http://7xp1a1.com1.z0.glb.clouddn.com/FakeWeather/FakeWeather_v1.3.2_20180202.apk)
+App体验:[knowweather.apk](https://github.com/SilenceDut/KnowWeather/blob/master/apk/knowweather.apk?raw=true)
 PS:这个项目需要等到我完成毕业设计再弄,由于它推荐度不是很高,怕坑
 
 

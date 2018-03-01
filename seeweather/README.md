@@ -263,7 +263,7 @@ PS:debug情况下使用stetho以及Watcher以及bugstag,release版本仅使用bu
   * 这个大牛还真的在做个项目的时用到他很多知识才去了解的,现在发现他涉猎挺广的,
     关键是他还仅仅是大学生
 
- 
+
 ## 推荐阅读-推荐的不仅仅是技术
 * [初创团队的Android应用质量保障之道 - CSDN博客](http://blog.csdn.net/bboyfeiyu/article/details/73716633)
 * [实战版本更新(okhttp3、service、notification)](http://mp.weixin.qq.com/s/nB5AnvltKfaF0yJNErOUFg)
