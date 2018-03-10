@@ -55,7 +55,6 @@ PS:自给自足(数据自己爬取提供是最靠谱的),其实我个人不是�
 
 ## 接口数据
 * [绝对干货：供个人开发者赚钱免费使用的一些好的API接口](https://mp.weixin.qq.com/s/mPF_WLz-oM4wklaoN6AGbA)
-* [Wensibob/-Api ](https://github.com/Wensibob/-Api/blob/master/README.md)
 * [国内数据API接口集合](https://github.com/TonnyL/Awesome_APIs/blob/master/README-zh.md) <br/>
 PS:我基础比较薄弱,只会简单搭建一个web服务器,很多时候我都想去弥补这方面的知识,但
    很遗憾就是我Android开发经验少以及计算机网络底子差,所以想码两三个项目之后再去
