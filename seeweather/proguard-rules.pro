@@ -52,17 +52,6 @@
 # End Retrofit 2.X
 
 
-##configuration for LeakCanary
--keep class org.eclipse.mat.** { *; }
--keep class com.squareup.leakcanary.** { *; }
--keep class com.squareup.haha.** { *; }
--dontwarn com.squareup.haha.guava.**
--dontwarn com.squareup.haha.perflib.**
--dontwarn com.squareup.haha.trove.**
--dontwarn com.squareup.leakcanary.**
--dontwarn sun.misc.Unsafe
--dontwarn org.w3c.dom.bootstrap.DOMImplementationRegistry
-# End LeakCanary
 
 ## configuration for Gson
 -keepattributes Signature
@@ -76,18 +65,7 @@
 # End Gson
 
 
-## configuration for citypicker
--keep class com.lljjcoder.**{
-	*;
-}
 
--dontwarn demo.**
--keep class demo.**{*;}
--dontwarn net.sourceforge.pinyin4j.**
--keep class net.sourceforge.pinyin4j.**{*;}
--keep class net.sourceforge.pinyin4j.format.**{*;}
--keep class net.sourceforge.pinyin4j.format.exception.**{*;}
-# End citypicker
 
 
 

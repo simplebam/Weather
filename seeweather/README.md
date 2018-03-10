@@ -99,6 +99,7 @@
      在网址[Notification常见样式总结 - 简书](https://www.jianshu.com/p/6c89c3792b90)
      评论区看到
 
+
 ### 项目中的用到的开源框架
 * ButterKnife
   * [ButterKnife8.5.1 使用方法教程总结 - CSDN博客](http://blog.csdn.net/niubitianping/article/details/54893571)
@@ -160,8 +161,7 @@
     强大且全面的图片加载器,支持 GIF，手势缩放以及分块显示超大图片](https://github.com/panpf/sketch)
     无需关心TAG，因为根本就不使用TAG来关联，也自带多种图片处理效果，圆形的、圆角
     的、高斯模糊的等等
-* citypicker/crazyandcoder
-  * [crazyandcoder/citypicker: citypicker城市选择器，详细的省市区地址信息，支持仿iOS滚轮实现，一级或者三级列表展示方式。](https://github.com/crazyandcoder/citypicker)
+* citypicker:[yanzhenjie/AddressChecker]([MD风格的地址选择器](https://github.com/yanzhenjie/AddressChecker))
 * [AlipayZeroSdk-支付宝转账工具类](https://github.com/fython/AlipayZeroSdk)
    * [如何在app中打开支付宝进行打赏开发者 - CSDN博客](http://blog.csdn.net/qq_24531461/article/details/72858868)
    * 二维码可以在支付宝手机客户端或者网页[支付宝条码支付 - 扫码](https://qr.alipay.com/paipai/personal.htm)

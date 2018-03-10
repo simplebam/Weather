@@ -15,15 +15,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 
-import com.lljjcoder.Interface.OnCityItemClickListener;
-import com.lljjcoder.bean.CityBean;
-import com.lljjcoder.bean.DistrictBean;
-import com.lljjcoder.bean.ProvinceBean;
-import com.lljjcoder.citywheel.CityConfig;
-import com.lljjcoder.style.citypickerview.CityPickerView;
 import com.yueyue.seeweather.R;
 import com.yueyue.seeweather.base.BaseActivity;
 import com.yueyue.seeweather.common.utils.DoubleClickExit;
@@ -34,6 +27,7 @@ import com.yueyue.seeweather.common.utils.Util;
 import com.yueyue.seeweather.component.OrmLite;
 import com.yueyue.seeweather.component.RxBus;
 import com.yueyue.seeweather.modules.about.ui.AboutActivity;
+import com.yueyue.seeweather.modules.address.ui.AddressCheckActivity;
 import com.yueyue.seeweather.modules.main.adapter.HomePagerAdapter;
 import com.yueyue.seeweather.modules.main.domain.ChangeCityEvent;
 import com.yueyue.seeweather.modules.main.domain.CityORM;
@@ -46,6 +40,8 @@ import butterknife.BindView;
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final int MULTI_CITY_REQUEST_CODE = 666;
+    private static final int CHANGE_CITY_REQUEST_CODE = 777;
 
     @BindView(R.id.viewPager)
     ViewPager mViewPager;
@@ -63,8 +59,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private MainFragment mMainFragment;
     private MultiCityFragment mMultiCityFragment;
 
-    //申明对象
-    private CityPickerView mPicker = new CityPickerView();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,25 +66,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         initView();
         initDrawer();
         initIcon();
-        initCityPicker();
         startService(new Intent(this, AutoUpdateService.class));
 
     }
 
-    private void initCityPicker() {
-        /**
-         * 预先加载仿iOS滚轮实现的全部数据
-         */
-        mPicker.init(this);
-        //添加默认的配置，不需要自己定义
-        CityConfig cityConfig = new CityConfig.Builder()
-                .titleTextColor("#585858")//标题文字颜色
-                .setCityWheelType(CityConfig.WheelType.PRO_CITY)//显示类，只显示省份一级，显示省市两级还是显示省市区三级
-                .province("广东省")//默认显示的省份
-                .city("广州市")//默认显示省份下面的城市
-                .build();
-        mPicker.setConfig(cityConfig);
-    }
 
     @Override
     protected int layoutId() {
@@ -269,34 +248,33 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 .show();
     }
 
+
     private void showPicker(boolean isMultiCity) {
-        //监听选择点击事件及返回结果 https://github.com/crazyandcoder/citypicker
-        mPicker.setOnCityItemClickListener(new OnCityItemClickListener() {
-            @Override
-            public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
-                Log.e(TAG, "city:" + city);
-                if (city != null) {
-                    String cityStr = Util.replaceCity(city.toString());
-                    if (isMultiCity) {
-                        OrmLite.getInstance().save(new CityORM(cityStr));
-                        RxBus.getDefault().post(new MultiUpdateEvent());
-                    } else {
-                        SpUtil.getInstance().setCityName(cityStr);
-                        RxBus.getDefault().post(new ChangeCityEvent());
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-        });
-
-        //显示
-        mPicker.showCityPicker();
+        Intent intent = new Intent(this, AddressCheckActivity.class);
+        int requestCode = isMultiCity ? MULTI_CITY_REQUEST_CODE : CHANGE_CITY_REQUEST_CODE;
+        startActivityForResult(intent, requestCode);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (RESULT_OK == resultCode) {
+            switch (requestCode) {
+                case MULTI_CITY_REQUEST_CODE:
+                    String cityStr = Util.replaceCity(AddressCheckActivity.parse(data));
+                    OrmLite.getInstance().save(new CityORM(cityStr));
+                    RxBus.getDefault().post(new MultiUpdateEvent());
+                    break;
+                case CHANGE_CITY_REQUEST_CODE:
+                    String cityStr1 = Util.replaceCity(AddressCheckActivity.parse(data));
+                    SpUtil.getInstance().setCityName(cityStr1);
+                    RxBus.getDefault().post(new ChangeCityEvent());
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
 
     @Override
     public void onBackPressed() {

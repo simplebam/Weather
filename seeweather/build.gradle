@@ -113,8 +113,9 @@ dependencies {
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknife_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknife_version"
 
-    //citypicker https://github.com/crazyandcoder/citypicker
-    compile "liji.library.dev:citypickerview:$rootProject.ext.citypickerview_version"
+    // 做地址选择器用到 地址选择器借鉴:https://github.com/yanzhenjie/AddressChecker
+    compile "com.yanzhenjie:loading:$rootProject.ext.loading_version"
+    compile 'com.alibaba:fastjson:1.1.52.android'
 
     //AlipayZeroSdk https://github.com/fython/AlipayZeroSdk
     compile "moe.feng:AlipayZeroSdk:$rootProject.ext.alipayzerosdk_version"
@@ -124,18 +125,4 @@ dependencies {
     //bugtags https://work.bugtags.com/login.html
     implementation 'com.bugtags.library:bugtags-lib:latest.integration'
 
-    //cc3641/Watcher https://github.com/xcc3641/Watcher
-    implementation "com.github.xcc3641:watcher:$rootProject.ext.watcher_version"
-
-    //stetho https://github.com/facebook/stetho
-    implementation "com.facebook.stetho:stetho:$rootProject.ext.stetho_version"
-    implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.ext.stetho_version"
-
-    //blockcanary https://github.com/markzhai/AndroidPerformanceMonitor
-    debugCompile "com.github.markzhai:blockcanary-android:$rootProject.ext.blockcanary_version"
-    releaseCompile "com.github.markzhai:blockcanary-no-op:$rootProject.ext.blockcanary_version"
-
-    //leakcanary https://github.com/square/leakcanary
-    debugCompile "com.squareup.leakcanary:leakcanary-android:$rootProject.ext.leakcanary_version"
-    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.ext.leakcanary_version"
 }

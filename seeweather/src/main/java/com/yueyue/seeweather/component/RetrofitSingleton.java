@@ -1,8 +1,6 @@
 package com.yueyue.seeweather.component;
 
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.litesuits.orm.db.assit.WhereBuilder;
-import com.yueyue.seeweather.BuildConfig;
 import com.yueyue.seeweather.base.BaseApplication;
 import com.yueyue.seeweather.common.C;
 import com.yueyue.seeweather.common.utils.RxUtil;
@@ -77,9 +75,6 @@ public class RetrofitSingleton {
             return newBuilder.build();
         };
         builder.cache(cache).addInterceptor(cacheInterceptor);
-        if (BuildConfig.DEBUG) {
-            builder.addNetworkInterceptor(new StethoInterceptor());
-        }
         //设置超时
         builder.connectTimeout(15, TimeUnit.SECONDS);
         builder.readTimeout(20, TimeUnit.SECONDS);

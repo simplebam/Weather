@@ -5,12 +5,6 @@ import android.content.Context;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.bugtags.library.Bugtags;
-import com.facebook.stetho.Stetho;
-import com.github.moduth.blockcanary.BlockCanary;
-import com.hugo.watcher.Watcher;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
-import com.yueyue.seeweather.BuildConfig;
 import com.yueyue.seeweather.component.CrashHandler;
 
 public class BaseApplication extends Application {
@@ -18,7 +12,6 @@ public class BaseApplication extends Application {
     private static String sCacheDir;
     private static Context sAppContext;
 
-    private RefWatcher mRefWatcher;
 
     // TODO: 16/8/1 这里的夜间模式 UI 有些没有适配好 暂时放弃夜间模式
     static {
@@ -32,21 +25,10 @@ public class BaseApplication extends Application {
         sAppContext = this;
         CrashHandler.init(new CrashHandler(this));
 
-//        if (!BuildConfig.DEBUG) {
-//            FIR.init(this);
-//        }
-
-        if (BuildConfig.DEBUG) {
-            Watcher.getInstance().start(this);
-            Stetho.initializeWithDefaults(this);
-        }
-
         Bugtags.start("b6e803321c11fee9902270e8a3dbbe70",
                 this,
                 Bugtags.BTGInvocationEventBubble);
 
-        BlockCanary.install(this, new AppBlockCanaryContext()).start();
-        mRefWatcher = LeakCanary.install(this);
 
 
 //         /*
@@ -61,28 +43,10 @@ public class BaseApplication extends Application {
         //考虑到权限问题.这里统一放到内置内存卡去
         sCacheDir = getApplicationContext().getCacheDir().toString();
 
-//这里会引发(BaseApplication.java:54) io.reactivex.exceptions.OnErrorNotImplementedException:
-// Attempt to invoke virtual method 'android.database.
-// Cursor android.database.sqlite.SQLiteDatabase.query(java.lang.String, java.lang.String[],
-// java.lang.String, java.lang.String[],java.lang.String, java.lang.String, java.lang.String)'
-// on a null object reference
-//        RxJavaPlugins.setErrorHandler(throwable -> {
-//            if (throwable != null) {
-//                PLog.e(throwable.toString());
-//            } else {
-//                PLog.e("call onError but exception is null");
-//            }
-//        });
-
-
     }
 
 
 
-    public static RefWatcher getRefWatcher(Context context) {
-        BaseApplication application = (BaseApplication) context.getApplicationContext();
-        return application.mRefWatcher;
-    }
 
 
     public static Context getAppContext() {

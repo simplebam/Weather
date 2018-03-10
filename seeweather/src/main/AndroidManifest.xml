@@ -20,8 +20,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_LOGS"/>
-    <!--悬浮窗-->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:name=".base.BaseApplication"
@@ -38,7 +36,6 @@
             android:value="08595dfda1c2c6e6c34dd8db3aee4312"/>
 
         <service android:name="com.amap.api.location.APSService"/>
-        <service android:name="com.hugo.watcher.WatcherService"/>
         <service android:name=".modules.service.AutoUpdateService"/>
 
 
@@ -65,9 +62,9 @@
             android:name=".modules.main.ui.DetailCityActivity"
             android:screenOrientation="portrait"/>
 
-        <!--<activity
-           android:name=".modules.city.ui.ChoiceCityActivity"
-           android:screenOrientation="portrait"/>-->
+        <activity
+            android:name=".modules.address.ui.AddressCheckActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

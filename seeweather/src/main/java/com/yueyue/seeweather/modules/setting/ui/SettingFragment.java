@@ -22,9 +22,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.bugtags.library.Bugtags;
-import com.hugo.watcher.Watcher;
 import com.yueyue.seeweather.R;
-import com.yueyue.seeweather.base.BaseApplication;
 import com.yueyue.seeweather.common.C;
 import com.yueyue.seeweather.common.utils.FileSizeUtil;
 import com.yueyue.seeweather.common.utils.FileUtil;
@@ -121,7 +119,7 @@ public class SettingFragment extends PreferenceFragment
             showUpdateDialog();
         } else if (mWatcherSwitch == preference) {
             if (mWatcherSwitch.isChecked()) {
-                Watcher.getInstance().start(BaseApplication.getAppContext());
+                Snackbar.make(getView(), "该功能已经放弃", Snackbar.LENGTH_SHORT).show();
             }
         }
         return true;
