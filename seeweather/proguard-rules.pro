@@ -37,9 +37,12 @@
     @butterknife.* <methods>;
 }
 -dontwarn butterknife.internal.**
+# End Butterknife
+
+#configuration for okhttp3
 -dontwarn okio.**
 -dontwarn com.squareup.okhttp.**
-# End Butterknife
+# End okhttp3
 
 #configuration for Retrofit 2.X
 -dontwarn retrofit2.**
