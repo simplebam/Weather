@@ -40,7 +40,7 @@ PS:框架学习还是需要等我学了MVP之后再来码这个项目
 了模块化架构 和 Android Architecture Components](https://github.com/SilenceDut/KnowWeather)
 
 App体验:[knowweather.apk](https://github.com/SilenceDut/KnowWeather/blob/master/apk/knowweather.apk?raw=true)
-PS:这个项目需要等到我完成毕业设计再弄,由于它推荐度不是很高,怕坑
+PS:这个项目依赖了太多自己的集成库,感觉现在的水平不够,所以暂时不模仿
 
 
 ### 最理想的天气App
