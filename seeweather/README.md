@@ -232,9 +232,6 @@ PS:debug情况下使用stetho以及Watcher以及bugstag,release版本仅使用bu
     ```
      sCacheDir = getApplicationContext().getCacheDir().toString();
     ```
-* 原项目有个xml文件叫做"item_city.xml",而开源库[CityPicker](https://github.com/crazyandcoder/citypicker)
-  冲突了(这个库里面也有一个xml文件叫做"item_city.xml"),所以我决定把它改为
-  "item_city_adapter.xml"
 
 
 ### 项目中数据提供
