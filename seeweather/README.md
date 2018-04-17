@@ -133,6 +133,16 @@
    * [RxPermissions获取运行时权限 - 简书](https://www.jianshu.com/p/314e9e27592f)
    * 当用户选择了“不再提示+拒绝”之后的处理,只能移步到系统设置去打开权限了
    * 在onResume()中处理监听到设置了禁止后不再询问
+* 联网框架:OkHttp
+  * [Okhttp解析（一）请求的分发，拦截 - 简书 ](https://www.jianshu.com/p/1c39c7bb34ca)
+  * [Okhttp解析（二）网络请求的执行 - 简书 ](https://www.jianshu.com/p/601a84fe42a3)
+  * [Okhttp解析（三）网络连接的管理 - 简书 ](https://www.jianshu.com/p/9a78fcb77b0a)
+  * [Okhttp解析（四）网络连接的建立 - 简书 ](https://www.jianshu.com/p/f7206af8b8a0)
+  * [Okhttp解析（五）缓存的处理 - 简书 ](https://www.jianshu.com/p/00d281c226f6)
+  * [Android网络编程（六）OkHttp3用法全解析 | 刘望舒的博客](http://liuwangshu.cn/application/network/6-okhttp3.html)
+  * 关于OkHttp3无法再通过OkHttpClient.cancel(tag)形式来取消请求,我身边挺多小伙伴纷纷还是使用OkHttp2.x问题,我个人认为技术始终需要更新,并非因为一个     简单的理由就让你停滞,在这里我参考了以下的文章进行取消:
+    * [关于取消OkHttp请求的问题 - 简书](https://www.jianshu.com/p/b74466039b84)
+    * 上面这篇文章评论这句话说的特别有道理:其实cancel网络请求的时候，如果还未和服务器建立连接，它会回调到onFailure()方法中，但是还有一种情况就是它       会在onResponse的时候刚好cancel网络请求，那么它会在onResponse()方法中抛出java.net.SocketException: Socket closed   
 * Retrofit
    * [你真的会用Retrofit2吗?Retrofit2完全教程 - 简书](https://www.jianshu.com/p/308f3c54abdd)
    * [Android Retrofit 2.0使用 | 吴小龙同學](http://wuxiaolong.me/2016/01/15/retrofit/)
