@@ -103,6 +103,7 @@
 ### 项目中的用到的开源框架
 * ButterKnife
   * [ButterKnife8.5.1 使用方法教程总结 - CSDN博客](http://blog.csdn.net/niubitianping/article/details/54893571)
+  * [ButterKnife使用详解 - CSDN博客 ](https://blog.csdn.net/itjianghuxiaoxiong/article/details/50177549)
 * OrmLite-Android高性能数据库框架
   * [Android 快速开发系列之数据库篇（LiteOrm） -简书](https://www.jianshu.com/p/0d72226ef434)
   * [litesuits/android-lite-orm](https://github.com/litesuits/android-lite-orm)
